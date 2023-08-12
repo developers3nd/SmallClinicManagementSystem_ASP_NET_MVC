@@ -1,0 +1,50 @@
+﻿
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/moment.js"></script>
+
+<form>
+    <input type="date" name="str" id="str" class="form-control" /> 
+    <input type="date" name="end" id="end" class="form-control" /> <br />
+    <input type="button" id="btnReport" class="btn btn-primary" value="Reports"  /> <br />
+
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+          Doctor
+        </th>
+       
+        <th>
+          Specialization
+        </th>
+        <th>
+           Patient Name
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Unique Token
+        </th>
+    
+    </tr>
+
+    <tbody id="myresult">
+
+    </tbody>
+    </table>
+
+<script>
+    $(document).ready(function () {
+        $("#btnReport").click(function () {
+            $.get("/Token/GetReport",
+                {str:$("#str").val(), end:$("#end").val()},
+                function (data) {
+                    $.each(data, function (key, val) {
+                        $("#myresult").append("<tr> <td>" + val.FirstName + val.LastName + "</td><td>" + val.Specialization + "</td><td>" + val.PatientName + "</td><td>" + moment(val.TokenDate).format("YYYY-DD-MM") + "</td><td>" + val.UniqueToken + "</td></tr>");
+                    })
+                })
+        })
+    })
+</script>

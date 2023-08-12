@@ -1,0 +1,59 @@
+﻿@model IEnumerable<smallclinicMVC.Models.token_details>
+
+
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TokenDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueToken)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TokenDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UniqueToken)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TokenID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TokenID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TokenID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
